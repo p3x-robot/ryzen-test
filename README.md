@@ -1,5 +1,12 @@
 # ryzen-test
-Script to reproduce randomly crashing processes under load on AMD Ryzen processors on _Ubuntu_ 17.04.
+Script to reproduce randomly crashing processes under load on AMD Ryzen processors on distributions using apt-get [Debian], dnf [Fedora] or pacman [ArchLinux]. This fork uses GCC 7.2.0 instead of the original 7.1.0 because the latter was causing problem (read "failing") against glib 2.26 and newer.
+
+Please note that I don't have a faulty unit at my disposal to test this script. If you think or know that you have a faulty unit, could you get it touch with me so we can make sure GCC 7.2.0 is able to reproduce the segfaults when the script is running on distributions using apt-get or dnf.
+
+# News
+January, 5th, 2018:
+* Updating the code and documentation to clearly state the differences between this fork and the original code.
+* Cherry-picked some commits from Tobbez's fork to nicely play with ISO-8601, clean some log noise and to log temperature.
 
 # Try it
 Run
@@ -9,7 +16,7 @@ Run
 and watch the output.
 
 # Method
-This script will download GCC sources (version 7.1) and build GCC in parallel loops on a compressed ramdisk.
+This script will download GCC sources (version 7.2.0) and build GCC in parallel loops on a compressed ramdisk.
 Each loop requires several Gb of disk space (and here, RAM in this case).
 Building other software packages might work just as well; the script could be easily adapted.
 
@@ -37,25 +44,28 @@ However, with only 16Gb RAM, this configuration might still run out of memory.
 
 > ./kill-ryzen.sh 4 4
 
-# Update on my experience (suaefar)
-I wrote this script to reproducibly show that there was a severe problem with my early (adopted) Ryzen processor.
-First, I experienced segfaults (a few per day) while performing simulations with complex, partly undocumented code that probably only few care about [1,2].
+# Background from original developer (Suaefar)
+Suaefar wrote this script to reproducibly show that there was a severe problem with his early (adopted) Ryzen processor.
+First, he experienced segfaults (a few per day) while performing simulations with complex, partly undocumented code that probably only few care about [1,2].
 _Compiling_ the GNU _compiler_ collection (GCC) with the GCC seemed much more suitable to demonstrate the problem (ruling out bad code) and was already proposed in an AMD community thread [3] and elsewhere.
 Parallel builds with -j 1 seemed to even increase the load and probability to hit the problem, sometimes after only a few seconds.
 
-A few days ago, I got a replacement from AMD for my affected Ryzen R7 1700.
-It survived more than 24 accumulated hours (4*8h) of parallel GCC compilation without a single crashed process.
-At the time of writing, 90% of my simulations (about 22h of calculations, still running) were completed without any error.
-I have not experienced a single segfault until now (2017-09-08).
+He got a replacement from AMD for my affected Ryzen R7 1700.
+It survived more than 24 accumulated hours (4*8h) of parallel GCC compilation without a single crashed process. No segfault were observed after the CPU had been replaced.
 
 [1] https://github.com/m-r-s/fade
 [2] https://github.com/HoerTech-gGmbH/openMHA
 [3] https://community.amd.com/thread/215773
 
+# Update on my experience (Oxalin)
+Using an ArchLinux system combined with a Ryzen 1700, I had encountered here and there a few segfaults when installing packages from AUR (which need to be compiled locally). This is when I heard from Phoronix.com about a possible Ryzen CPU bug that would create segfaults on some "early" units when heavily stressed.
+
+When I tried the original script, I encountered errors that were not related to segfault. Looking at the logs, I quickly determined that I was hitting a GCC 7.1.0 known bug: builds would fail when compiled against glib 2.26 (and newer). Moving to 7.2.0 and then running the script allowed me to recreate segfaults on my system. Also, but unrelated, I was also hitting an MCE error here in there.
+
+After asking an RMA from AMD for what seemed a faulty CPU, I've never observed any segfault after retesting the script with the replacement unit.
+
 # TODO
 Extend logs:
-* Temperatures
 * CPU usage
 * I/O wait
 * Memory usage
-
