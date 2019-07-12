@@ -52,14 +52,14 @@ if $USE_RAMDISK; then
 fi
 
 echo "Download GCC sources"
-DOWNLOAD_FILE=gcc-7.2.0.tar.xz
-wget -O "$DOWNLOAD_FILE" -c ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.2.0/$DOWNLOAD_FILE || exit 1
+DOWNLOAD_FILE=gcc-7.4.0.tar.xz
+wget -O "$DOWNLOAD_FILE" -c ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-7.4.0/$DOWNLOAD_FILE || exit 1
 
 echo "Extract GCC sources"
 tar xf $DOWNLOAD_FILE || exit 1
 
 echo "Download prerequisites"
-(cd gcc-7.2.0/ && ./contrib/download_prerequisites)
+(cd gcc-7.4.0/ && ./contrib/download_prerequisites)
 
 [ -d 'buildloop.d' ] && rm -r 'buildloop.d'
 mkdir -p buildloop.d || exit 1
