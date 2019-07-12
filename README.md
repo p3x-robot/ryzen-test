@@ -8,7 +8,7 @@ January, 5th, 2018:
 * Updating the code and documentation to clearly state the differences between this fork and the original code.
 * Cherry-picked some commits from Tobbez's fork to nicely play with ISO-8601, clean some log noise and to log temperature.
 
-July, 12nd, 2019:
+July, 12th, 2019:
 * Upgraded GCC to 7.4, throws no error on my `ASUS-ROG-Strix-GL702ZC`
 * It works on Ubuntu 18.04 (Linux Mint 19.1)
 * For my `ASUS-ROG-Strix-GL702ZC`, I had to use the https://github.com/hirschmann/nbfc program
