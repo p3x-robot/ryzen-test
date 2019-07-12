@@ -14,7 +14,7 @@ July, 12th, 2019:
 * For my `ASUS-ROG-Strix-GL702ZC`, I had to use the https://github.com/hirschmann/nbfc program
 * If you have an `ASUS-ROG-Strix-GL702ZC`, you can use this config for high load `Asus-ROG-GL702ZC-High-Load.xml.xml` for `nbfc`
 * Building OpenWrt all packages on Ryzen 1700 using 17 jobs it takes 2 hours (on an Intel 7700k it is 4.5 hours with 9 jobs)
-* Without having to replace my CPU! (The cooling was needed for me that fixed it.)
+* Without having to replace my CPU! (The cooling was needed for me, that fixed it.)
 
 
 # Try it
