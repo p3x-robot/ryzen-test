@@ -25,7 +25,7 @@ Run
 and watch the output.
 
 # Method
-This script will download GCC sources (version 7.2.0) and build GCC in parallel loops on a compressed ramdisk.
+This script will download GCC sources (version 7.4.0) and build GCC in parallel loops on a compressed ramdisk.
 Each loop requires several Gb of disk space (and here, RAM in this case).
 Building other software packages might work just as well; the script could be easily adapted.
 
