@@ -9,7 +9,7 @@ January, 5th, 2018:
 * Cherry-picked some commits from Tobbez's fork to nicely play with ISO-8601, clean some log noise and to log temperature.
 
 July, 12th, 2019:
-* Upgraded GCC to 7.4, throws no error on my `ASUS-ROG-Strix-GL702ZC`
+* Upgraded GCC to 9.3.0, throws no error on my `ASUS-ROG-Strix-GL702ZC`
 * It works on Ubuntu 18.04 (Linux Mint 19.1)
 * For my `ASUS-ROG-Strix-GL702ZC`, I had to use the https://github.com/hirschmann/nbfc program
 * If you have an `ASUS-ROG-Strix-GL702ZC`, you can use this config for high load `Asus-ROG-GL702ZC-High-Load.xml.xml` for `nbfc`
