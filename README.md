@@ -1,7 +1,7 @@
 # ryzen-test
-Script to reproduce randomly crashing processes under load on AMD Ryzen processors on distributions using apt-get [Debian], dnf [Fedora] or pacman [ArchLinux]. This fork uses GCC 7.4.0 instead of the original 7.1.0 because the latter was causing problem (read "failing") against glib 2.26 and newer.
+Script to reproduce randomly crashing processes under load on AMD Ryzen processors on distributions using apt-get [Debian], dnf [Fedora] or pacman [ArchLinux]. This fork uses GCC 9.3.0 instead of the original 7.1.0 because the latter was causing problem (read "failing") against glib 2.26 and newer.
 
-Please note that I don't have a faulty unit at my disposal to test this script. If you think or know that you have a faulty unit, could you get in touch with me so we can make sure GCC 7.4.0 is able to reproduce the segfaults when the script is running on distributions using apt-get or dnf.
+Please note that I don't have a faulty unit at my disposal to test this script. If you think or know that you have a faulty unit, could you get in touch with me so we can make sure GCC 9.3.0 is able to reproduce the segfaults when the script is running on distributions using apt-get or dnf.
 
 # News
 January, 5th, 2018:
@@ -25,7 +25,7 @@ Run
 and watch the output.
 
 # Method
-This script will download GCC sources (version 7.4.0) and build GCC in parallel loops on a compressed ramdisk.
+This script will download GCC sources (version 9.3.0) and build GCC in parallel loops on a compressed ramdisk.
 Each loop requires several Gb of disk space (and here, RAM in this case).
 Building other software packages might work just as well; the script could be easily adapted.
 

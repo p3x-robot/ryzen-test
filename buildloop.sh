@@ -15,6 +15,6 @@ for ((I=0;1;I++)); do
   [ -e "${WDIR}" ] && rm -rf "${WDIR}"
   mkdir -p "${WDIR}" || error "create workdir"
   cd "${WDIR}" || error "change to workdir"
-  ${CDIR}/gcc-7.4.0/configure --disable-multilib &> configure.log || error "configure"
+  ${CDIR}/gcc-9.3.0/configure --disable-multilib &> configure.log || error "configure"
   make -j "$TPROC" &> build.log || error "build"
 done
